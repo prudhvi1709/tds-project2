@@ -1,0 +1,12 @@
+fastapi
+fastapi-cors
+requests
+python-dotenv
+python-multipart
+pypdf2
+pandas
+openpyxl    
+uvicorn
+numpy
+scikit-learn
+tabula-py
