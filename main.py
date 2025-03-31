@@ -50,7 +50,7 @@ app.add_middleware(
 # System prompts
 TDS_SYSTEM_PROMPT = "Provide only the exact answer without any explanations, reasoning, or additional text. Be extremely concise."
 
-CODE_GENERATION_PROMPT = "Generate only the exact code needed to solve the problem. No explanations, comments, or additional text. Return ONLY the executable code."
+CODE_GENERATION_PROMPT = "Generate only the exact code needed to solve the problem. If the question contains any formula's, analyze it and then come up with a clear and concise answer. No explanations, comments, or additional text. Return ONLY the executable code."
 
 # API token
 API_TOKEN = os.getenv("LLMFOUNDRY_TOKEN")
