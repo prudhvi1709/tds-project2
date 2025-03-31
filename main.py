@@ -13,7 +13,6 @@ import tabula
 import subprocess
 import openpyxl
 import gc
-from fastapi.staticfiles import StaticFiles
 
 # Load environment variables
 load_dotenv()
@@ -851,13 +850,10 @@ Please provide a clear and concise answer to the question.
         except Exception as e:
             print(f"Warning: Could not clean up temporary directory: {str(e)}")
 
+# Add back the root endpoint since we're not serving static files anymore
 @app.get("/")
 def root():
     return {"message": "TDS Project API is running. Use /api endpoint with POST requests."}
-
-# Mount static files directory LAST - after all other routes
-static_dir = os.path.join(os.path.dirname(__file__), "static")
-app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
