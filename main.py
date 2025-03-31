@@ -1,6 +1,6 @@
-from fastapi import FastAPI, Form, Query, HTTPException, File, UploadFile
+from fastapi import FastAPI, Form, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-import requests, os, tempfile, zipfile, csv, io, json, shutil, subprocess, sys, platform
+import requests, os, tempfile, zipfile, csv, json, shutil, subprocess, sys, platform
 from typing import Optional, Dict, Any, List
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -12,7 +12,6 @@ import re
 import tabula
 import subprocess
 import openpyxl
-from openpyxl.utils import get_column_letter
 import gc
 
 # Load environment variables
