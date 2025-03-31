@@ -1,18 +1,5 @@
 # /// script
-# dependencies = [
-#     "fastapi",
-#     "fastapi-cors",
-#     "markdown",
-#     "requests",
-#     "python-dotenv",
-#     "python-multipart",
-#     "pypdf2",
-#     "pandas",
-#     "tabula-py",  
-#     "openpyxl",
-#     "uvicorn",
-#     "numpy",
-#     "scikit-learn"
+# dependencies = ["fastapi", "fastapi-cors", "markdown", "requests", "python-dotenv", "python-multipart", "pypdf2", "pandas", "tabula-py", "openpyxl", "uvicorn", "numpy", "scikit-learn"]
 # ]
 # ///
 from fastapi import FastAPI, Form, Query, HTTPException, File, UploadFile
