@@ -13,6 +13,7 @@ import tabula
 import subprocess
 import openpyxl
 import gc
+from fastapi.staticfiles import StaticFiles
 
 # Load environment variables
 load_dotenv()
@@ -854,7 +855,10 @@ Please provide a clear and concise answer to the question.
 def root():
     return {"message": "TDS Project API is running. Use /api endpoint with POST requests."}
 
+# Mount static files directory LAST - after all other routes
+static_dir = os.path.join(os.path.dirname(__file__), "static")
+app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
+
 if __name__ == "__main__":
-    # import uvicorn
-    # uvicorn.run(app, host="127.0.0.1", port=8000)
-    pass
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
