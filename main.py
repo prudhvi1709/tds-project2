@@ -10,7 +10,6 @@ import PyPDF2
 import pandas as pd
 import re
 import tabula
-import markdown
 import subprocess
 import openpyxl
 from openpyxl.utils import get_column_letter

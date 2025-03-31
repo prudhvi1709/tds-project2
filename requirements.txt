@@ -1,13 +1,11 @@
 fastapi
 fastapi-cors
-markdown
 requests
 python-dotenv
 python-multipart
 pypdf2
 pandas
-tabula-py
-openpyxl
+openpyxl    
 uvicorn
 numpy
-scikit-learn 
+scikit-learn

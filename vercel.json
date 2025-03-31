@@ -1,11 +1,16 @@
 {
-  "version": 2,
+  "functions": {
+    "api/**": {
+      "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
+    }
+  },
   "builds": [
     {
       "src": "main.py",
       "use": "@vercel/python",
       "config": {
-        "runtime": "python3.10"
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
       }
     }
   ],
