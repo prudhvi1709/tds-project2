@@ -854,7 +854,3 @@ Please provide a clear and concise answer to the question.
 @app.get("/")
 def root():
     return {"message": "TDS Project API is running. Use /api endpoint with POST requests."}
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
