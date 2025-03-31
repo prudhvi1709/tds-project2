@@ -1,122 +1,96 @@
-# IIT Madras Graded Assignment Helper API
+# AI-Powered Question Answering System
 
-This API helps answer questions from IIT Madras' Online Degree in Data Science graded assignments.
+A sophisticated API that leverages Large Language Models (LLMs) to automatically process and answer questions from educational content.
 
-## Features
+## Overview
 
-- Accepts assignment questions via API
-- Processes optional file attachments
-- Returns answers in JSON format
-- Handles various question types from all 5 graded assignments
-- Uses a custom LLM endpoint for question processing
-- Supports a wide range of assignment questions through intelligent prompt engineering
+This FastAPI-based solution harnesses the power of language models to deliver precise answers to user queries. Key capabilities include:
 
-## Setup Instructions
+1. Natural language question processing with database matching
+2. Dynamic Python/Bash code generation and execution
+3. Support for file uploads including ZIP and CSV formats
 
-### Prerequisites
+## Core Capabilities
 
+### Smart Question Analysis
+- Smart detection of query type (direct answer vs code execution needed)
+- Contextual understanding and processing
+
+### Intelligent Code Operations
+- Automatic Python/Bash code generation
+- Secure sandboxed execution environment
+- Markdown code block parsing and extraction
+
+### Advanced File Handling
+- ZIP file extraction and processing
+- CSV data analysis capabilities
+- Context-aware file processing for enhanced LLM responses
+
+### Seamless API Integration
+- LLM API connectivity for response generation
+- Secure credential management via environment variables
+
+## Getting Started
+
+### System Requirements
 - Python 3.8 or newer
-- OpenAI API key
-- uv (Python package installer) - optional but recommended
+- FastAPI framework
+- scikit-learn library
+- python-dotenv
 
-### Installation
+### Setup Instructions
 
-1. Clone this repository:
-   ```
-   git clone <repository-url>
-   cd <repository-directory>
-   ```
-
-2. Set up your environment:
-
-   **Option 1: Using uv (recommended)**
-   ```
-   pip install uv
-   uv pip install -e .
-   ```
-
-   **Option 2: Manual installation**
-   Create a virtual environment and install the dependencies listed in the inline script at the top of main.py:
-   ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install fastapi uvicorn python-multipart openai pandas numpy pydantic aiofiles requests beautifulsoup4
-   ```
-
-3. Set your OpenAI API key as an environment variable:
-   ```
-   export OPENAI_API_KEY=your-api-key-here
-   ```
-   On Windows:
-   ```
-   set OPENAI_API_KEY=your-api-key-here
-   ```
-
-### Running Locally
-
-Run the FastAPI application using Uvicorn:
-```
-uvicorn main:app --reload
+1. Get the code:
+```bash
+git clone https://github.com/prudhvi1709/tdsproject2.git
+cd tdsproject2
 ```
 
-The API will be available at `http://localhost:8000/api/`
+3. Configure environment variables:
+```
+GITHUB_API_KEY=your_api_token_here
+VERCEL_API_KEY=your_api_token_here
+```
 
-### Deployment
-
-#### Deploying to Vercel
-
-1. Create a Vercel account if you don't have one.
-2. Install Vercel CLI: `npm i -g vercel`
-3. Deploy: `vercel --prod`
-4. Don't forget to set your OPENAI_API_KEY as an environment variable in the Vercel dashboard.
+4. Run the application:
+```bash
+uv run app.py
+```
 
 ## API Usage
 
-### Endpoint
+### Endpoint: `/api`
 
-`POST /api/`
+**Method**: POST
 
-### Request Format
-
-Send a POST request with `multipart/form-data` containing:
-- `question` (required): The assignment question text
-- `file` (optional): Any file attachment mentioned in the question
+**Parameters**:
+- `question` (required): The question to answer
+- `file` (optional): A file to upload (ZIP or CSV)
 
 ### Example Request
 
 ```bash
-curl -X POST "https://your-app.vercel.app/api/" \
+curl -X POST "http://localhost:8000/api/" \
   -H "Content-Type: multipart/form-data" \
-  -F "question=Download and unzip file abcd.zip which has a single extract.csv file inside. What is the value in the 'answer' column of the CSV file?" \
-  -F "file=@abcd.zip"
+  -F "question=What is the output of pd.read_csv('data.csv').head()?" \
+  -F "file=@data.csv"
 ```
 
-### Example Response
+## Error Handling
 
-```json
-{
-  "answer": "1234567890"
-}
-```
+The API returns detailed error messages when:
+- Code execution fails
+- The LLM API returns an error
+- File processing encounters issues
 
-## How It Works
+## Contributing
 
-The API uses a generalized approach to handle all types of assignment questions:
-
-1. **Question Analysis**: The system analyzes the question to understand what's being asked
-2. **File Processing**: If a file is provided, the system extracts relevant information based on the file type
-3. **LLM Processing**: The question and file information are sent to a language model with instructions to provide only the direct answer
-4. **Response Formatting**: The answer is returned in a simple JSON format
-
-This approach allows the system to handle a wide variety of question types without needing specific handlers for each type.
-
-## Notes
-
-- The API uses a custom LLM endpoint (https://llmfoundry.straive.com/openai/v1/chat/completions) for processing questions
-- The system relies on intelligent prompt engineering to handle different question types
-- Dependencies are managed using uv inline script dependencies at the top of main.py
-- Remember that this tool is for educational purposes to help understand the course material better
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request
 
 ## License
 
-MIT 
+MIT
