@@ -9,3 +9,4 @@ openpyxl
 uvicorn
 numpy
 scikit-learn
+tabula-py
