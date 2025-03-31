@@ -1,7 +1,3 @@
-# /// script
-# dependencies = ["fastapi", "fastapi-cors", "markdown", "requests", "python-dotenv", "python-multipart", "pypdf2", "pandas", "tabula-py", "openpyxl", "uvicorn", "numpy", "scikit-learn"]
-# ]
-# ///
 from fastapi import FastAPI, Form, Query, HTTPException, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import requests, os, tempfile, zipfile, csv, io, json, shutil, subprocess, sys, platform
